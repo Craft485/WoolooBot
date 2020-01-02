@@ -15,25 +15,39 @@ client.on('ready', _=> {
 client.on('message', (receivedMessage)=>{
     let msg = receivedMessage
     let MSG = receivedMessage.content.toUpperCase()
+    console.log(msg.author.toString() + ": " + msg)
     if (receivedMessage === client.user) {
         return
     }
     if (receivedMessage.content.startsWith("w.") || receivedMessage.content.startsWith("W.")) {
-        CMD(msg)
+        CMD(receivedMessage)
     }
     if (MSG === "WOO") {
         receivedMessage.channel.send("loo")
     }
 })
 
-function CMD(msg) {
-    let fullCommand = msg.content.substr(2) // Remove the leading exclamation mark
+var woolooArray = [
+    "WoolooRoll.gif", "woolooSip.PNG", "WoolooSurprise.png"
+]
+
+function getWooloo(receivedMessage) {
+    //console.log(receivedMessage)
+    let i = Math.round(Math.random() * woolooArray.length)
+    //console.log(woolooArray[i])
+    let wooloo = new Discord.Attachment("./WoolooImages/" + woolooArray[i])
+
+    receivedMessage.channel.send(wooloo)
+}
+
+function CMD(receivedMessage) {
+    let fullCommand = receivedMessage.content.substr(2) // Remove the leading exclamation mark
     let splitCommand = fullCommand.split(" ") // Split the message up in to pieces for each space
     let primaryCommand = splitCommand[0] // The first word directly after the exclamation is the command
     let arguments = splitCommand.slice(1) // All other words are arguments/parameters/options for the command
 
     if (primaryCommand === "code") {
-        msg.channel.send("```haskell" + "\n" + 
+        receivedMessage.channel.send("```haskell" + "\n" + 
         `The Wooloo Code:
         1. All Wooloos are created equal
         2. In a Wooloo environment it may arise that a shiny Wooloo(visible via its black coat color) can become the alpha or lead Wooloo within that Wooloo village 
@@ -42,11 +56,13 @@ function CMD(msg) {
         5. All Wooloos are entitled to their own individual beliefs outside the Wooloo Code` + "\n" + 
         "```")
     } else if (primaryCommand === "help") {
-        msg.channel.send("```" + "\n" +
+        receivedMessage.channel.send("```" + "\n" +
         `Commands:
         -w.help: shows this list
         -w.code: shows the Wooloo Code` + "\n" + 
         "```")
+    } else if (primaryCommand === "wooloo") {
+        getWooloo(receivedMessage)
     }
 }
 
