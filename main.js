@@ -24,6 +24,9 @@ client.on('message', (receivedMessage)=>{
     }
     if (MSG === "WOO") {
         receivedMessage.channel.send("loo")
+    } else if (MSG.includes("HELLO WOOLOO")) {
+        const sip = client.emojis.find(emoji => emoji.name === "woolooSip")
+        receivedMessage.reply(`Hello there! ${sip}`)
     }
 })
 
@@ -59,7 +62,8 @@ function CMD(receivedMessage) {
         receivedMessage.channel.send("```" + "\n" +
         `Commands:
         -w.help: shows this list
-        -w.code: shows the Wooloo Code` + "\n" + 
+        -w.code: shows the Wooloo Code
+        -w.wooloo: shows an image of a Wooloo` + "\n" + 
         "```")
     } else if (primaryCommand === "wooloo") {
         getWooloo(receivedMessage)
