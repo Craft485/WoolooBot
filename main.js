@@ -31,7 +31,7 @@ client.on('message', (receivedMessage)=>{
 })
 
 var woolooArray = [
-    "WoolooRoll.gif", "woolooSip.PNG", "WoolooSurprise.png"
+    "WoolooRoll.gif", "woolooSip.PNG", "WoolooSurprise.png", "upsidedownWooloo.png", "shinyWooLoo.png", "hapWooloo.png"
 ]
 
 function getWooloo(receivedMessage) {
