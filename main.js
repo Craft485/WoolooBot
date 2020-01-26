@@ -31,16 +31,28 @@ client.on('message', (receivedMessage)=>{
 })
 
 var woolooArray = [
-    "WoolooRoll.gif", "woolooSip.PNG", "WoolooSurprise.png", "upsidedownWooloo.png", "shinyWooLoo.png", "hapWooloo.png"
+    "WoolooRoll.gif", "woolooSip.PNG", "WoolooSurprise.png", 
+    "upsidedownWooloo.png", "shinyWooLoo.png", "hapWooloo.png", 
+    "zekloo.png", "wooflower.png"
 ]
 
 function getWooloo(receivedMessage) {
     //console.log(receivedMessage)
-    let i = Math.round(Math.random() * woolooArray.length)
+    let i = Math.floor(Math.random() * woolooArray.length)
     //console.log(woolooArray[i])
     let wooloo = new Discord.Attachment("./WoolooImages/" + woolooArray[i])
 
     receivedMessage.channel.send(wooloo)
+}
+
+var snugArray = [
+    "woohug.png", "woolooLay.png"
+]
+function hugWooloo(receivedMessage) {
+    let i = Math.floor(Math.random() * snugArray.length)
+    let snugged = new Discord.Attachment("./snuglooImages/" + snugArray[i])
+    //send attachment
+    receivedMessage.channel.send(snugged)
 }
 
 function CMD(receivedMessage) {
@@ -63,10 +75,13 @@ function CMD(receivedMessage) {
         `Commands:
         -w.help: shows this list
         -w.code: shows the Wooloo Code
-        -w.wooloo: shows an image of a Wooloo` + "\n" + 
+        -w.wooloo: shows an image of a Wooloo
+        -w.snug: snug/hug a wooloo` + "\n" + 
         "```")
     } else if (primaryCommand === "wooloo") {
         getWooloo(receivedMessage)
+    } else if (primaryCommand === "snug") {
+        hugWooloo(receivedMessage)
     }
 }
 
