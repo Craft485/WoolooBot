@@ -15,7 +15,12 @@ client.on('ready', _=> {
 client.on('message', (receivedMessage)=>{
     let msg = receivedMessage
     let MSG = receivedMessage.content.toUpperCase()
-    console.log(msg.author.toString() + ": " + msg)
+    
+    var today = new Date()
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+    var dateTime = date+' '+time
+    console.log(msg.author.toString() + ": " + msg + " " + dateTime)
     if (receivedMessage === client.user) {
         return
     }
@@ -82,7 +87,22 @@ function CMD(receivedMessage) {
         getWooloo(receivedMessage)
     } else if (primaryCommand === "snug") {
         hugWooloo(receivedMessage)
+    } else if (primaryCommand === "dex" || primaryCommand === "info") {
+        dex(receivedMessage)
     }
+}
+
+function dex(receivedMessage) {
+    const roll =client.emojis.find(emoji => emoji.name === "WoooshWoolooRoll")
+    let woolooEmbed = new Discord.RichEmbed()
+        .setColor("#7df9ff")
+        .addField("Wooloo Info:",
+                 "Wooloo is a Normal type Pokémon introduced in Generation 8. It is known as the Sheep Pokémon." + "\n" +
+                 "The white fur that covers their bodies grows throughout their lives, and it will fully grow back in three months even if the Wooloo has been completely shorn. \n"+
+                 "Wooloo live as a herd and mimic the actions of their Trainer or herd leader. They dislike conflict, and if they need to escape from enemies, they will simply roll away. \n"+
+                 roll, 
+                 true)
+    receivedMessage.channel.send(woolooEmbed)
 }
 
 client.login(config.BOT_SECRET)
