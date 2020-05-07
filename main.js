@@ -1,5 +1,5 @@
 //get the information stored in the config module(file)
-const  config = require("./config.mjs")
+const  config = require("./config.js")
 const Discord = require('discord.js') //get discord.js lib
 const client = new Discord.Client() //create a new client
 //when the bot loads up
