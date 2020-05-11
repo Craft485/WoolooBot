@@ -1,0 +1,28 @@
+{
+  "name": "wooloobot",
+  "version": "1.0.0",
+  "description": "Wooloo Bot",
+  "main": "main.js",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "node.js": "^0.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "w.wooloo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Craft485/WoolooBot.git"
+  },
+  "keywords": [
+    "wooloo",
+    "bot"
+  ],
+  "author": "Craft485",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Craft485/WoolooBot/issues"
+  },
+  "homepage": "https://github.com/Craft485/WoolooBot#readme"
+}
